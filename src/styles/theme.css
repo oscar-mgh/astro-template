@@ -1,4 +1,6 @@
 @theme inline {
+  --font-display: "Montserrat", sans-serif;
+  --font-sans: "Inter", sans-serif;
   --color-primary: var(--theme-primary);
   --color-primary-soft: var(--theme-primary-soft);
 }
