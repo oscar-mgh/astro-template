@@ -1,0 +1,47 @@
+@import "tailwindcss";
+@import "./theme.css";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-display: "Fraunces", Georgia, serif;
+  --font-sans: "DM Sans", sans-serif;
+}
+
+.hero-placeholder {
+  background: linear-gradient(
+    135deg,
+    var(--theme-primary-soft) 0%,
+    var(--theme-primary-soft) 48%,
+    var(--theme-primary-mid) 48%,
+    var(--theme-primary-mid) 100%
+  );
+}
+
+@layer utilities {
+  .page-wrap {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-stone-50 font-sans text-stone-950 antialiased transition-colors dark:bg-stone-950 dark:text-stone-50;
+  }
+
+  button,
+  a,
+  select,
+  summary,
+  [role="button"] {
+    cursor: pointer;
+  }
+}
