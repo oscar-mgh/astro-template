@@ -48,6 +48,30 @@ const whatsappMessage = encodeURIComponent('Hola, me gustaría solicitar informa
 		<div class="page-enter">
 			<slot />
 		</div>
+		<footer class="-mx-7 px-4 sm:px-0 border-t border-neutral-400/70 dark:border-neutral-700 bg-primary-soft py-9 text-stone-950 sm:-mx-8 sm:py-10 lg:mx-0 dark:bg-stone-900 dark:text-stone-50">
+			<div class="mx-auto grid w-full max-w-7xl gap-8 px-7 sm:grid-cols-[1fr_auto] sm:items-end sm:px-8">
+				<div>
+					<p class="font-display text-lg font-semibold">Mansir</p>
+					<p class="mt-2 max-w-md text-sm leading-6 text-stone-700 dark:text-stone-300">
+						Reparamos, mejoramos y renovamos tus espacios con atención cercana.
+					</p>
+					<p class="mt-5 text-xs text-stone-600 dark:text-stone-400">Hecho en Toluca, con compromiso en cada trabajo.</p>
+				</div>
+				<a
+					href="https://www.facebook.com/p/Mansir-mantenimiento-y-soluciones-integrales-rojas-61592461895942/"
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label="¡Síguenos en Facebook!"
+					title="¡Síguenos en Facebook!"
+					class="inline-flex min-h-10 items-center justify-self-end gap-2 text-sm font-medium text-stone-950 transition-opacity hover:opacity-70 focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-stone-950 sm:mb-1 dark:text-stone-50 dark:focus-visible:outline-white"
+				>
+					<svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" class="size-6 shrink-0">
+						<path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073c0 6.019 4.388 11.002 10.125 11.854v-8.385H7.078v-3.469h3.047V9.429c0-3.03 1.792-4.705 4.533-4.705 1.312 0 2.686.236 2.686.236v2.976h-1.513c-1.49 0-1.956.931-1.956 1.887v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.075 24 18.092 24 12.073Z" />
+					</svg>
+					<span>¡Síguenos en Facebook!</span>
+				</a>
+			</div>
+		</footer>
 		<a
 			href={`https://wa.me/${whatsappPhoneNumber}?text=${whatsappMessage}`}
 			target="_blank"
