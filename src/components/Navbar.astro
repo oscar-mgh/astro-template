@@ -3,58 +3,59 @@ import lightLogo from '../assets/light-mode-logo.png';
 import darkLogo from '../assets/dark-mode-logo.png';
 ---
 
+
 <header class="border-b border-stone-200 bg-white/90 dark:border-stone-800 dark:bg-stone-950/90">
-	<div class="page-wrap flex min-h-18 flex-wrap items-center justify-between gap-x-6 gap-y-3 py-3">
-		<a href="/" aria-label="Mansir, inicio" class="flex size-[60px] shrink-0 items-center justify-center">
-			<img src={lightLogo.src} alt="Mansir Mantenimiento y Soluciones Integrales" width="55" height="55" class="size-full object-contain dark:hidden" />
-			<img src={darkLogo.src} alt="Mansir Mantenimiento y Soluciones Integrales" width="55" height="55" class="hidden size-full object-contain dark:block" />
-		</a>
+    <div class="page-wrap flex min-h-18 flex-col items-center justify-center gap-3 py-4 sm:flex-row sm:justify-between sm:gap-6 sm:py-3">
+        <a href="/" aria-label="Mansir, inicio" class="flex shrink-0 items-center justify-center">
+            <img src={lightLogo.src} alt="Mansir Mantenimiento y Soluciones Integrales" width="60" height="50" class="h-[50px] w-[60px] object-contain dark:hidden" />
+            <img src={darkLogo.src} alt="Mansir Mantenimiento y Soluciones Integrales" width="60" height="50" class="hidden h-[50px] w-[60px] object-contain dark:block" />
+        </a>
 
-		<div class="flex items-center gap-3 sm:gap-6">
-			<nav aria-label="Navegación principal" class="flex items-center gap-3 sm:gap-6">
-				<a class="text-sm text-stone-600 transition-colors hover:text-primary dark:text-stone-300" href="/">Inicio</a>
-				<a class="text-sm text-stone-600 transition-colors hover:text-primary dark:text-stone-300" href="/catalogo">Catálogo</a>
-				<a class="text-sm text-stone-600 transition-colors hover:text-primary dark:text-stone-300" href="/contacto">Contacto</a>
-			</nav>
+        <div class="flex w-full items-center justify-center gap-3 sm:w-auto sm:gap-6">
+            <nav aria-label="Navegación principal" class="flex items-center justify-center gap-4 sm:gap-6">
+                <a class="text-sm text-stone-600 transition-colors hover:text-primary dark:text-stone-300" href="/">Inicio</a>
+                <a class="text-sm text-stone-600 transition-colors hover:text-primary dark:text-stone-300" href="/catalogo">Servicios</a>
+                <a class="text-sm text-stone-600 transition-colors hover:text-primary dark:text-stone-300" href="/contacto">Contacto</a>
+            </nav>
 
-			<button
-				type="button"
-				data-theme-toggle
-				aria-label="Activar modo oscuro"
-				title="Cambiar tema"
-				class="flex size-10 shrink-0 items-center justify-center rounded-lg border border-stone-200 text-stone-700 transition-colors hover:bg-stone-100 dark:border-stone-700 dark:text-stone-200 dark:hover:bg-stone-800"
-			>
-				<svg data-sun-icon aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="size-5">
-					<circle cx="12" cy="12" r="4" />
-					<path stroke-linecap="round" d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" />
-				</svg>
-				<svg data-moon-icon aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="hidden size-5">
-					<path stroke-linecap="round" stroke-linejoin="round" d="M20.5 15.5A8.5 8.5 0 0 1 8.5 3.5 8.5 8.5 0 1 0 20.5 15.5Z" />
-				</svg>
-			</button>
-		</div>
-	</div>
+            <button
+                type="button"
+                data-theme-toggle
+                aria-label="Activar modo oscuro"
+                title="Cambiar tema"
+                class="flex size-10 shrink-0 items-center justify-center rounded-lg border border-stone-200 text-stone-700 transition-colors hover:bg-stone-100 dark:border-stone-700 dark:text-stone-200 dark:hover:bg-stone-800"
+            >
+                <svg data-sun-icon aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="size-5">
+                    <circle cx="12" cy="12" r="4" />
+                    <path stroke-linecap="round" d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" />
+                </svg>
+                <svg data-moon-icon aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="hidden size-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M20.5 15.5A8.5 8.5 0 0 1 8.5 3.5 8.5 8.5 0 1 0 20.5 15.5Z" />
+                </svg>
+            </button>
+        </div>
+    </div>
 </header>
 
 <script>
-	const themeToggle = document.querySelector<HTMLButtonElement>('[data-theme-toggle]');
-	const sunIcon = themeToggle?.querySelector<SVGElement>('[data-sun-icon]');
-	const moonIcon = themeToggle?.querySelector<SVGElement>('[data-moon-icon]');
+    const themeToggle = document.querySelector<HTMLButtonElement>('[data-theme-toggle]');
+    const sunIcon = themeToggle?.querySelector<SVGElement>('[data-sun-icon]');
+    const moonIcon = themeToggle?.querySelector<SVGElement>('[data-moon-icon]');
 
-	function syncThemeControl(isDark: boolean) {
-		themeToggle?.setAttribute('aria-label', isDark ? 'Activar modo claro' : 'Activar modo oscuro');
-		sunIcon?.classList.toggle('hidden', isDark);
-		moonIcon?.classList.toggle('hidden', !isDark);
-	}
+    function syncThemeControl(isDark: boolean) {
+        themeToggle?.setAttribute('aria-label', isDark ? 'Activar modo claro' : 'Activar modo oscuro');
+        sunIcon?.classList.toggle('hidden', isDark);
+        moonIcon?.classList.toggle('hidden', !isDark);
+    }
 
-	syncThemeControl(document.documentElement.classList.contains('dark'));
+    syncThemeControl(document.documentElement.classList.contains('dark'));
 
-	themeToggle?.addEventListener('click', () => {
-		const isDark = document.documentElement.classList.toggle('dark');
-		syncThemeControl(isDark);
+    themeToggle?.addEventListener('click', () => {
+        const isDark = document.documentElement.classList.toggle('dark');
+        syncThemeControl(isDark);
 
-		try {
-			localStorage.setItem('theme', isDark ? 'dark' : 'light');
-		} catch {}
-	});
+        try {
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        } catch {}
+    });
 </script>
