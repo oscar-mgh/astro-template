@@ -1,9 +1,14 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig, envField } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
+	env: {
+		schema: {
+			WHATSAPP_NUMBER: envField.string({ context: 'server', access: 'public' }),
+		},
+	},
 	vite: {
 		plugins: [tailwindcss()],
 	},

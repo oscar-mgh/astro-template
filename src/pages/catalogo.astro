@@ -1,13 +1,74 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const serviceImages = Object.entries(
+	import.meta.glob<string>('../assets/servicios/*.{webp,jpg}', {
+		eager: true,
+		query: '?url',
+		import: 'default',
+	}),
+).sort(([first], [second]) => first.localeCompare(second, 'es', { numeric: true }));
 ---
 
-<Layout title="Catálogo | Lorem ipsum">
-	<main class="page-wrap flex min-h-[calc(100svh-5rem)] flex-col justify-center py-12">
-		<p class="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Lorem ipsum</p>
-		<h1 class="mt-4 font-display text-5xl text-stone-950 dark:text-stone-50">Catálogo</h1>
-		<p class="mt-5 max-w-xl text-lg leading-8 text-stone-600 dark:text-stone-300">
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.
-		</p>
+<Layout
+	title="Catálogo de servicios | Mansir Toluca"
+	description="Explora los servicios y proyectos de mantenimiento, instalaciones y remodelación de Mansir para hogares y negocios en Toluca, Nuevo León."
+	keywords="catálogo de servicios Mansir, proyectos de mantenimiento Toluca, servicios de mantenimiento residencial, mantenimiento comercial, instalaciones eléctricas, servicios de plomería, remodelación de espacios, construcción y mantenimiento, soluciones para hogares y negocios en Toluca"
+>
+	<main class="page-wrap py-10 sm:py-14 md:py-16">
+		<header class="mx-auto mb-8 max-w-2xl text-center sm:mb-10 md:mx-0 md:text-left">
+			<p class="text-sm font-semibold uppercase tracking-[0.16em] text-primary">Soluciones Mansir</p>
+			<h1 class="mt-3 font-display text-3xl font-bold text-stone-950 sm:text-4xl lg:text-5xl dark:text-stone-50">Catálogo de servicios</h1>
+			<p class="mt-4 text-base leading-7 text-stone-600 sm:text-lg dark:text-stone-300">
+				Conoce algunos de nuestros trabajos de mantenimiento, instalaciones y soluciones integrales para tus espacios.
+			</p>
+		</header>
+
+		{serviceImages.length > 0 && (
+			<section aria-label="Galería de servicios" class="overflow-hidden rounded-xl border border-stone-200 bg-white shadow-sm dark:border-stone-800 dark:bg-stone-900">
+				<div class="relative overflow-hidden">
+					<div data-carousel-track class="flex transition-transform duration-500 ease-out">
+						{serviceImages.map(([path, image], index) => (
+							<figure class="relative min-w-full">
+								<img
+									src={image}
+									alt={`Proyecto de mantenimiento y servicios integrales ${index + 1}`}
+									loading={index === 0 ? 'eager' : 'lazy'}
+									class="aspect-[4/3] max-h-[34rem] w-full bg-stone-100 object-contain sm:aspect-[16/9] dark:bg-stone-950"
+								/>
+								<figcaption class="sr-only">Imagen {index + 1} de {serviceImages.length}: {path.split('/').pop()}</figcaption>
+							</figure>
+						))}
+					</div>
+					<button type="button" data-carousel-previous aria-label="Imagen anterior" class="absolute left-3 top-1/2 flex size-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-stone-900 shadow transition hover:bg-white dark:bg-stone-900/90 dark:text-stone-50 dark:hover:bg-stone-800">
+						<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="size-5"><path stroke-linecap="round" stroke-linejoin="round" d="m15 18-6-6 6-6" /></svg>
+					</button>
+					<button type="button" data-carousel-next aria-label="Imagen siguiente" class="absolute right-3 top-1/2 flex size-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-stone-900 shadow transition hover:bg-white dark:bg-stone-900/90 dark:text-stone-50 dark:hover:bg-stone-800">
+						<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="size-5"><path stroke-linecap="round" stroke-linejoin="round" d="m9 18 6-6-6-6" /></svg>
+					</button>
+				</div>
+				<div class="flex flex-col items-center gap-1 px-4 py-3 text-center sm:flex-row sm:justify-between sm:gap-4 sm:px-6 sm:text-left">
+					<p class="text-sm text-stone-600 dark:text-stone-300">Casos de éxito</p>
+					<p aria-live="polite" class="text-sm font-medium tabular-nums text-stone-700 dark:text-stone-200"><span data-carousel-current>1</span> / {serviceImages.length}</p>
+				</div>
+			</section>
+		)}
 	</main>
+
+	<script>
+		const track = document.querySelector<HTMLElement>('[data-carousel-track]');
+		const currentDisplay = document.querySelector<HTMLElement>('[data-carousel-current]');
+		const slides = track?.children;
+		let currentIndex = 0;
+
+		function showSlide(index: number) {
+			if (!track || !slides?.length) return;
+			currentIndex = (index + slides.length) % slides.length;
+			track.style.transform = `translateX(-${currentIndex * 100}%)`;
+			if (currentDisplay) currentDisplay.textContent = String(currentIndex + 1);
+		}
+
+		document.querySelector('[data-carousel-previous]')?.addEventListener('click', () => showSlide(currentIndex - 1));
+		document.querySelector('[data-carousel-next]')?.addEventListener('click', () => showSlide(currentIndex + 1));
+	</script>
 </Layout>

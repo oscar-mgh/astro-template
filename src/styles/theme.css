@@ -6,13 +6,13 @@
 }
 
 :root {
-  --theme-primary: #b54750;
-  --theme-primary-soft: #f1dddd;
-  --theme-primary-mid: #d99494;
+  --theme-primary: #9a7012;
+  --theme-primary-soft: #f6edcf;
+  --theme-primary-mid: #d5b65d;
 }
 
 html.dark {
-  --theme-primary: #ff5364;
-  --theme-primary-soft: #4a1019;
-  --theme-primary-mid: #c51f36;
+  --theme-primary: #e2bd59;
+  --theme-primary-soft: #3a2d12;
+  --theme-primary-mid: #ad842b;
 }
