@@ -45,7 +45,9 @@ const whatsappMessage = encodeURIComponent('Hola, me gustaría solicitar informa
 	</head>
 	<body class="min-h-screen px-9 sm:px-8 lg:px-0">
 		<Navbar />
-		<slot />
+		<div class="page-enter">
+			<slot />
+		</div>
 		<a
 			href={`https://wa.me/${whatsappPhoneNumber}?text=${whatsappMessage}`}
 			target="_blank"
